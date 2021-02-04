@@ -30,19 +30,11 @@ export default function ThongTinLichChieu(props) {
 
   useEffect(() => {
     dispatch(layThongTinHeThongCumRapActionApi(stateHeThongRap));
-  },[]);
+  }, []);
 
-  const thongTinCumRapReducer = useSelector(
-    (state) => state.QuanLyPhimReducer.thongTinCumRap
+  const { thongTinLichChieu, thongTinCumRap, thongTinHeThongRap } = useSelector(
+    (state) => state.QuanLyPhimReducer
   );
-
-  const thongTinHeThongRapReducer = useSelector(
-    (state) => state.QuanLyPhimReducer.thongTinHeThongRap
-  );
-
-  const { thongTinLichChieu } = useSelector((state) => state.QuanLyPhimReducer);
-
-  console.log(thongTinLichChieu.maPhim);
 
   const dispatchThemLichChieu = (lichChieuPhim) => {
     dispatch(themLichChieuActionApi(lichChieuPhim));
@@ -92,7 +84,7 @@ export default function ThongTinLichChieu(props) {
             style={{ width: 200 }}
             placeholder="Hệ Thống Rạp"
           >
-            {thongTinHeThongRapReducer.map((heThongRap, index) => (
+            {thongTinHeThongRap.map((heThongRap, index) => (
               <Option key={index} value={heThongRap.maHeThongRap}>
                 {heThongRap.tenHeThongRap}
               </Option>
@@ -111,7 +103,7 @@ export default function ThongTinLichChieu(props) {
             onChange={changeStateCumRap}
             value={stateCumRap}
           >
-            {thongTinCumRapReducer?.map((cumRap, index) => {
+            {thongTinCumRap?.map((cumRap, index) => {
               return (
                 <Option key={index} value={cumRap.maCumRap}>
                   {cumRap.tenCumRap}
@@ -127,15 +119,13 @@ export default function ThongTinLichChieu(props) {
           initialValue={null}
         >
           <Select style={{ width: 200 }} placeholder="Rạp Chiếu">
-            {thongTinCumRapReducer[stateCumRap]?.danhSachRap.map(
-              (rap, index) => {
-                return (
-                  <Option key={index} value={rap.maRap}>
-                    {rap.tenRap}
-                  </Option>
-                );
-              }
-            )}
+            {thongTinCumRap[stateCumRap]?.danhSachRap.map((rap, index) => {
+              return (
+                <Option key={index} value={rap.maRap}>
+                  {rap.tenRap}
+                </Option>
+              );
+            })}
           </Select>
         </Form.Item>
         <Form.Item

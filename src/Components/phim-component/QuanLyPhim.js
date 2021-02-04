@@ -19,7 +19,7 @@ export default function QuanLyPhim() {
 
   let [stateMaPhim, setStateMaPhim] = useState();
 
-  const { danhSachPhim } = useSelector((state) => state.QuanLyPhimReducer);
+  const { danhSachPhim,thongTinLichChieu } = useSelector((state) => state.QuanLyPhimReducer);
 
   useEffect(async () => {
     dispatch(await layDanhSachPhimApiAction());
@@ -75,6 +75,7 @@ export default function QuanLyPhim() {
   };
 
   const handleAddPhim = () => {
+    dispatch(thongTinLichChieuActionApi(stateMaPhim))
     showModalInforPhim();
   };
 

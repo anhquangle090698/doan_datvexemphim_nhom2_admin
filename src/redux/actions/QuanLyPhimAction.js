@@ -4,6 +4,7 @@ import {
   CHANGE_HE_THONG_RAP_ACTION,
   LAY_DANH_SACH_PHIM_ACTION,
   LAY_HE_THONG_CUM_RAP_ACTION,
+  LAY_HE_THONG_RAP_ACTION,
   THEM_PHIM_MOI_ACTION,
   THONG_TIN_LICH_CHIEU_ACTION,
 } from "../const/QuanLyPhimConst";
@@ -191,7 +192,7 @@ export const layThongTinHeThongRapActionApi = () => {
 
 export const layThongTinHeThongRapAction = (data) =>{
   return{
-    type:'LAY_HE_THONG_RAP_ACTION',
+    type:LAY_HE_THONG_RAP_ACTION,
     data
   }
 }

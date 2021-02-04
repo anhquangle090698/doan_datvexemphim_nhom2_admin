@@ -48,10 +48,7 @@ export default function QuanLyLichChieu() {
     }, 200);
   };
 
-  //INPUT SEARCH
-  const { Search } = Input;
-  const onSearch = (value) => console.log(value);
-
+ 
   const title = [
     {
       title: "Mã Phim",
@@ -101,14 +98,7 @@ export default function QuanLyLichChieu() {
   return (
     <>
       <h1 className="title-manage">Quản Lý Lịch Chiếu</h1>
-      <div className="container-search">
-        <Search
-          placeholder="Tìm Kiếm"
-          onSearch={onSearch}
-          enterButton
-          ghost="false"
-        />
-      </div>
+      
       <div className="container-table">
         <Table
           bordered
